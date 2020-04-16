@@ -3,9 +3,11 @@ pipeline {
     stages {
         stage('Build Application') {
             steps {
+				echo 'Building Application'
                 sh "mvn clean"
             }
             post {
+				echo 'Building Application - Post'
                 success {
                     echo "Now Archiving the Artifacts...."
                     archiveArtifacts artifacts: '**/*.war'
@@ -15,6 +17,7 @@ pipeline {
 
         stage('Create Tomcat Docker Image'){
             steps {
+				echo 'Create Tomcat Docker Image'
                 sh "pwd"
                 sh "ls -a"
                 sh "docker build . -t tomcatsamplewebapp:${env.BUILD_ID}"
