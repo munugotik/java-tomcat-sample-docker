@@ -4,7 +4,7 @@ pipeline {
         stage('Build Application') {
             steps {
 				echo 'Building Application'
-                bat "mvn clean"
+                bat "mvn clean package"
 				echo 'After - Building Application'
             }
             post { 
@@ -18,9 +18,9 @@ pipeline {
         stage('Create Tomcat Docker Image'){
             steps {
 				echo 'Create Tomcat Docker Image'
-                sh "pwd"
-                sh "ls -a"
-                sh "docker build . -t tomcatsamplewebapp:${env.BUILD_ID}"
+                bat "pwd"
+                bat "ls -a"
+                bat "docker build . -t tomcatsamplewebapp:${env.BUILD_ID}"
             }
         }
 
