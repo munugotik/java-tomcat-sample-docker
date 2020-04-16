@@ -5,9 +5,9 @@ pipeline {
             steps {
 				echo 'Building Application'
                 sh "mvn clean"
+				echo 'After - Building Application'
             }
-            post {
-				echo 'Building Application - Post'
+            post { 
                 success {
                     echo "Now Archiving the Artifacts...."
                     archiveArtifacts artifacts: '**/*.war'
