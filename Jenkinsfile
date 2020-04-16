@@ -4,7 +4,7 @@ pipeline {
         stage('Build Application') {
             steps {
 				echo 'Building Application'
-                sh "mvn clean"
+                bat "mvn clean"
 				echo 'After - Building Application'
             }
             post { 
